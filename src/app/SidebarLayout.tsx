@@ -1,9 +1,9 @@
 import Sidebar from "./Sidebar";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
 
-export default function Home() {
+export default function SidebarLayout() {
     return (
-        <div className="flex gap-3">
+        <div className="flex gap-3 h-full p-3">
             <div>
                 <Sidebar></Sidebar>
             </div>
