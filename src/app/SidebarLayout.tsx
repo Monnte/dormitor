@@ -1,44 +1,14 @@
+import { MainContent } from "./MainContent";
 import Sidebar from "./Sidebar";
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
 
 export default function SidebarLayout() {
     return (
         <div className="flex gap-3 h-full p-3">
-            <div>
+            <div className="w-1/5">
                 <Sidebar></Sidebar>
             </div>
-            <div>
-            <Card className="max-w-[400px] mb-3">
-                <CardHeader className="flex gap-3">
-                    <Image
-                    alt="nextui logo"
-                    height={40}
-                    radius="sm"
-                    src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-                    width={40}
-                    />
-                    <div className="flex flex-col">
-                    <p className="text-md">NextUI</p>
-                    <p className="text-small text-default-500">nextui.org</p>
-                    </div>
-                </CardHeader>
-                <Divider/>
-                <CardBody>
-                    <p>Make beautiful websites regardless of your design experience.</p>
-                </CardBody>
-                <Divider/>
-                <CardFooter>
-                    <Link
-                    isExternal
-                    showAnchorIcon
-                    href="https://github.com/nextui-org/nextui"
-                    >
-                    Visit source code on GitHub.
-                    </Link>
-                </CardFooter>
-                </Card>
-
-                <Button>Hello</Button>
+            <div className="w-4/5">
+                <MainContent></MainContent>
             </div>
         </div>
     );
