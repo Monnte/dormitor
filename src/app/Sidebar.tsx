@@ -2,7 +2,6 @@ import { Card, Input } from "@nextui-org/react";
 import { SearchIcon } from "./SearchIcon";
 import ItemList from "./ItemList";
 
-
 export default function Sidebar() {
     return (
         <Card className="box-border p-3 h-full w-full">

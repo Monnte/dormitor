@@ -1,5 +1,11 @@
-export function Room({width, height}: Record<string, number>) {
+interface Props {
+    id: string;
+    width: number;
+    height: number;
+}
+
+export function Room({id, width, height}: Props) {
     return (
-        <div className={`w-${width} h-${height}`}></div>
+        <div id={id} className={`w-${width} h-${height}`}></div>
     )
 }
