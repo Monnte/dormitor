@@ -1,11 +1,13 @@
+import {widthMap, heightMap} from './utils/dimensionMaps'
+
 interface Props {
     id: string;
     width: number;
     height: number;
 }
 
-export function Room({id, width, height}: Props) {
+export function Room(props: Props) {
     return (
-        <div id={id} className={`w-${width} h-${height}`}></div>
+        <div id={props.id} className={`${widthMap[props.width]} ${heightMap[props.height]}`}></div>
     )
 }

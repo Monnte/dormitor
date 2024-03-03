@@ -4,7 +4,9 @@ interface Size {
 }
 
 export function Hallway(size: Size) {
+    const minW = `min-w-${size.width}`
+    const minH = `min-h-${size.height}`
     return (
-        <div className={`${size.width ? `min-w-${size.width}` : 'min-w-1'} ${size.height ? `min-h-${size.height}` : `min-h-1`}`}></div>
+        <div className={`${size.width ? minW : 'min-w-1'} ${size.height ? minH : `min-h-1`}`}></div>
     )
 }

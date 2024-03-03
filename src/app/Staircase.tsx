@@ -9,8 +9,10 @@ export function Staircase(size: Size) {
         stairs.push(<div className="grow"></div>)
     }
     let stairsComponent = <div className="flex h-1/3 border divide-x divide-gray-700 border-gray-700">{stairs}</div>;
+    const minW = `min-w-${size.width}`
+    const minH = `h-${size.height}`
     return (
-        <div className={`${size.width ? `min-w-${size.width}` : 'min-w-1'} ${size.height ? `h-${size.height}` : `h-1`} flex flex-col`}>
+        <div className={`${size.width ? minW : 'min-w-1'} ${size.height ? minH : `min-h-1`} flex flex-col`}>
             {stairsComponent}
             <div className="h-1/3"></div>
             {stairsComponent}
