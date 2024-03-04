@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure,Card, CardHeader, CardBody } from "@nextui-org/react";
 import Image from "next/image";
 
 export default function ModalReserve({ onOpenRef, selected }) {
@@ -13,31 +13,35 @@ export default function ModalReserve({ onOpenRef, selected }) {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Room: {selected}</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1"></ModalHeader>
               <ModalBody>
-                {/* tow columns one text and other image */}
-                <div className="flex flex-row gap-2">
-                  <div className="flex flex-col gap-2">
-                    <div>Room: {selected}</div>
-                    <div>Capacity: 5</div>
-                    <div>Price: 1000</div>
-                    <div>Projector: Yes</div>
-                    <div>Whiteboard: Yes</div>
-                    <div>Wifi: Yes</div>
-                    <div>AC: Yes</div>
-                  </div>
-                  <div>
-                    <img 
-                    src="https://media.istockphoto.com/id/492965853/photo/university-college-dorm-room-with-bunkbeds-empty-unoccupied-student-bedroom.jpg?s=612x612&w=0&k=20&c=se0Dsy9AwP240fgPs10Fz39uPZR8PgPYn8hiFwhZf58=" alt="room image" />
-                  </div>
-                </div>
+              
+                <Card className="py-4">
+                  <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                  <h4 className="font-bold text-large">Room: {selected?.number}</h4>
+
+                  <img
+                      alt="Card background"
+                      className="object-cover rounded-xl"
+                      src="/dormimg.jpg"
+                      style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                    />
+                  </CardHeader>
+                  <CardBody className="overflow-visible py-2">
+                  <p>Area: {selected?.area} m2</p>
+                  <p>Persons: {selected?.persons}</p>
+                  <p>Occupied: {selected?.occupied ? "Yes" : "No"}</p>
+                  <p>People: {selected?.people?.join(", ")}</p>
+
+                  </CardBody>
+                </Card>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Action
+                  Make reservation
                 </Button>
               </ModalFooter>
             </>

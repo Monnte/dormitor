@@ -1,41 +1,64 @@
 'use client';
 
-import { Card, Input } from "@nextui-org/react";
+import { Divider } from "@nextui-org/react";
+import { Card, Input, Select, SelectItem } from "@nextui-org/react";
 import { SearchIcon } from "./SearchIcon";
 import ItemList from "./ItemList";
-import react, { useEffect, useState } from "react";
+import react, { useEffect, useState, useContext } from "react";
+import { data } from "./data/data";
+import { UIContext } from "./providers";
 
 
 export default function Sidebar() {
-
+    const { currentFloor, currentBlock, setCurrentFloor, setCurrentBlock } = useContext(UIContext);
     const [items, setItems] = useState([]);
-    const roomNumber = 10;
-    const floors = 6;
+    const [defaultItems, setDefaultItems] = useState([]);
 
-
-    let def = [];
-    for (let i = 1; i < floors + 1; i++) {
-        for (let j = 0; j < roomNumber; j++) {
-            def.push({ number: "0" + i + j.toString().padStart(2, "0") });
-        }
-    }
 
     useEffect(() => {
-        setItems(def);
+        // get all rooms from all floors
+        let allRooms = [];
+        for (let i = 0; i < data[currentBlock].plan?.details.length; i++) {
+
+            allRooms = allRooms.concat(
+                data[currentBlock].plan.details[i].map((item) => {
+                    return {
+                        floor: i,
+                        ...item,
+                        title: (i + 1).toString().padStart(2, "0") + item.number.toString().padStart(2, "0"),
+                    };
+                })
+            );
+        }
+        setItems(allRooms);
+        setDefaultItems(allRooms);
     }
-    , []);
+        , [currentBlock]);
 
 
 
     const filterItems = (value) => {
-        let filtered = def.filter((item) => {
-            return item.number.toLowerCase().includes(value.toLowerCase());
-        });
+        let filtered = defaultItems.filter((item) => {
+            return item.title.toLowerCase().includes(value.toLowerCase());
+        })
         setItems(filtered);
     };
 
     return (
-        <Card className="box-border p-3 h-full w-full">
+        <Card className="box-border p-3 w-full" style={{ maxHeight: "calc(90vh - 4rem)" }}>
+            <Select
+                label="Select a block"
+                defaultSelectedKeys={[data[currentBlock].block]}
+            >
+                {data.map((item, i) => {
+                    return <SelectItem
+                        key={item.block}
+                        value={item.block}
+                        onClick={() => setCurrentBlock(i)}
+                    >{item.block}</SelectItem>
+                })}
+            </Select>
+            <Divider className="my-3" />
             <Input
                 classNames={{
                     base: "h-10 mb-3",
@@ -52,7 +75,9 @@ export default function Sidebar() {
                     filterItems(e.target.value);
                 }}
             />
-            <ItemList items={items}></ItemList>
+            <ItemList items={items}
+
+            ></ItemList>
         </Card>
     );
 }
