@@ -27,6 +27,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
+.room:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
