@@ -4,7 +4,7 @@ import { PlanSpecification } from "./Plan";
 import { Room } from "./Room";
 import { data } from "./data/data";
 
-export function Rooms({ setSelected, plan,openModal,indexes, currentBlock, currentFloor}) {
+export function Rooms({ setSelected, plan,openModal,indexes, currentBlock, currentFloor}: PlanSpecification) {
     let rooms = [];
     for (let i = 0; i < plan.count; i++) {
         let index = indexes[i] - 1;
