@@ -4,7 +4,7 @@ import { Divider } from "@nextui-org/react";
 import { Card, Input, Select, SelectItem } from "@nextui-org/react";
 import { SearchIcon } from "./SearchIcon";
 import ItemList from "./ItemList";
-import react, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { data } from "./data/data";
 import { UIContext } from "./providers";
 
@@ -18,10 +18,10 @@ export default function Sidebar() {
     useEffect(() => {
         // get all rooms from all floors
         let allRooms = [];
-        for (let i = 0; i < data[currentBlock].plan?.details.length; i++) {
+        for (let i = 0; i < data[currentBlock].details.length; i++) {
 
             allRooms = allRooms.concat(
-                data[currentBlock].plan.details[i].map((item) => {
+                data[currentBlock].details[i].map((item) => {
                     return {
                         floor: i,
                         ...item,
@@ -38,7 +38,7 @@ export default function Sidebar() {
 
 
     const filterItems = (value) => {
-        let filtered = defaultItems.filter((item) => {
+        let filtered = defaultItems.filter((item: {title: string}) => {
             return item.title.toLowerCase().includes(value.toLowerCase());
         })
         setItems(filtered);

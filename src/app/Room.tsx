@@ -12,10 +12,13 @@ interface Props {
 
 export function Room(props: Props) {
     return (
-        <div id={props.id} className={`${widthMap[props.width]} ${heightMap[props.height]} room text-center`} onClick={props.onClick}
+        <div 
+            id={props.id} 
+            className={`${widthMap[props.width]} ${heightMap[props.height]} room text-center`} 
+            onClick={props.onClick}
             style={{ backgroundColor: props.occupied ? '#ffa6a6' : '#a6ffd7' }}
         > 
-        {props.name}
+            {props.name}
         </div>
     )
 }
