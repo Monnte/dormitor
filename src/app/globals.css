@@ -27,10 +27,29 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-
 .room:hover {
   background-color: rgba(0, 0, 0, 0.1) !important;
   cursor: pointer;
+}
+
+.floor {
+  border: 2px solid rgba(0, 0, 0, 0.0) !important;
+}
+
+.floor-inner {
+  border-width: 2px solid rgba(0, 0, 0, 0.0);
+}
+
+.floor.current {
+  border-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.floor-inner.current {
+  border-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.floor:hover {
+  border-color: #9ca3af !important;
 }
 
 @layer utilities {

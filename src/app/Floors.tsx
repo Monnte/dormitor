@@ -5,16 +5,25 @@ import { data } from "./data/data";
 import Divider from "./Divider";
 import { useContext } from "react";
 import { UIContext } from "./providers";
+import { Floor } from "./Floor";
 
-export function Floors({plan}) { // , indexes, currentBlock, currentFloor
-    const { currentFloor, currentBlock, setCurrentFloor, setCurrentBlock } = useContext(UIContext);
+export function Floors({plan}) {
+    const { currentBlock } = useContext(UIContext);
     let floors = [];
     for (let i = 0; i < plan.count; i++) {
         // let index = indexes[i] - 1;
         // let item = data[currentBlock].plan.details[currentFloor][index];
+        const floorRoomDetails = data[currentBlock].details[i].filter((data) => data.type === 'r')
         floors.push(
             <>
-                <div className={`w-40 h-20 cursor-pointer ${i === currentFloor ? 'border-4 border-gray-400' : '' }`} onClick={() => setCurrentFloor(i)}></div>
+                <div className={`w-40 h-20 cursor-pointer`}>
+                    <Floor 
+                        index={i}
+                        number={i+1}
+                        occupied={floorRoomDetails.filter((data) => data.occupied).length}
+                        capacity={floorRoomDetails.length}
+                    />
+                </div>
                 <Divider position={i} length={plan.count} />
             </>
         )
