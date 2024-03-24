@@ -54,7 +54,7 @@ export default function Sidebar() {
                     return <SelectItem
                         key={item.block}
                         value={item.block}
-                        onClick={() => setCurrentBlock(i)}
+                        onClick={() => {setCurrentBlock(i);setCurrentFloor(0)}}
                     >{item.block}</SelectItem>
                 })}
             </Select>

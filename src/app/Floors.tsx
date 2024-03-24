@@ -20,8 +20,10 @@ export function Floors({plan}) {
                     <Floor 
                         index={i}
                         number={i+1}
-                        occupied={floorRoomDetails.filter((data) => data.occupied).length}
-                        capacity={floorRoomDetails.length}
+                        // occupied={floorRoomDetails.filter((data) => data.occupied).length}
+                        // reduce occupied
+                        occupied={floorRoomDetails.reduce((acc, data) => acc + (Number(data.occupied) || 0), 0)}
+                        capacity={floorRoomDetails.length * 2}
                     />
                 </div>
                 <Divider position={i} length={plan.count} />

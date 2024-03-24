@@ -14,10 +14,26 @@ interface Props {
 
 export function Floor(props: Props) {
     const { currentFloor, setCurrentFloor } = useContext(UIContext);
+
+    const getBackgroundColor = () => {
+        if (props.occupied === props.capacity) {
+            return '#ffa6a6';
+        }
+        if (props.occupied >= props.capacity * 2 / 3) {
+            return '#ffd3c0';
+        }
+        if (props.occupied >= props.capacity / 3) {
+            return '#faefce';
+        }
+
+
+        return '#f0f0f0';
+    }
+
     return (
         <div 
         className={`h-full floor ${props.index === currentFloor ? 'current' : '' }` }
-        style={{ backgroundColor: props.occupied >= props.capacity/2 ? '#ffa6a6' : '#a6ffd7' }}
+        style={{ backgroundColor: getBackgroundColor() }}
         >
             <div 
                 id={props.id} 
