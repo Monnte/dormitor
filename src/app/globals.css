@@ -42,12 +42,12 @@ body {
 
 .floor-inner {
   border-width: 2px solid rgba(0, 0, 0, 0.0);
+  font-size: 1.5rem;
 }
 
 .floor.current {
   border-color: rgb(0, 0, 0) !important;
   font-weight: 700;
-  font-size: large;
 }
 
 .floor-inner.current {
@@ -63,6 +63,10 @@ body {
   border-width: 3px;
   margin: 0 2px;
   border-color: black;
+}
+
+.floor-capacity {
+  font-size: 1rem;
 }
 
 @layer utilities {

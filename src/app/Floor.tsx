@@ -41,7 +41,7 @@ export function Floor(props: Props) {
                 onClick={() => setCurrentFloor(props.index)}
             > 
                 <p>{props.number}.</p>
-                <p className="self-end">{props.occupied}/{props.capacity}</p>
+                <p className="self-end floor-capacity">{props.occupied}/{props.capacity}</p>
             </div>
         </div>
     )
