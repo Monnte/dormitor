@@ -28,12 +28,12 @@ export function Plan() {
 
     return (
         <Card className="h-full flex justify-items-center items-center p-3">
-            <div className="flex flex-row w-full justify-between">
-                <Button size="sm" color="primary"
+            <div className="flex flex-row w-full px-6">
+                <Button size="lg" color="default" variant="ghost" className="floor-btn"
                     onClick={() => setCurrentFloor(currentFloor - 1)}
                     isDisabled={currentFloor === 0}
                 >Previous Floor </Button>
-                <Button size="sm" color="primary"
+                <Button size="lg" color="default" variant="ghost" className="floor-btn"
                     onClick={() => setCurrentFloor(currentFloor + 1)}
                     isDisabled={currentFloor === data[currentBlock].plan.length - 1}
                 >Next Floor</Button>

@@ -15,12 +15,13 @@ export function Room(props: Props) {
     return (
         <div 
             id={props.id} 
-            className={`${widthMap[props.width]} ${heightMap[props.height]} room text-center`} 
+            className={`${widthMap[props.width]} ${heightMap[props.height]} room text-center center-vertical`} 
             onClick={props.onClick}
-            style={{ backgroundColor: occupancy == 2 ? '#ffa6a6' : occupancy == 1 ? '#ffd3c0' : '#f0f0f0' }}
+            style={{ backgroundColor: occupancy == 2 ? '#ffa6a6' : occupancy == 1 ? '#ffd3c0' : '#f0f0f0',
+            fontSize: '1.5rem' }}
         > 
             {props.name}
-            <div style={{ fontSize: '0.6rem' }}>
+            <div style={{ fontSize: '0.8rem' }}>
                 {occupancy} / 2
             </div>
         </div>
