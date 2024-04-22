@@ -37,7 +37,7 @@ export default function ItemList({ items }) {
                 onOpenRef.current();
               }}
             >
-              R: {item.title}
+              {item.title}
             </ListboxItem>
           ))}
         </Listbox>

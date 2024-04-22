@@ -27,6 +27,10 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.center-vertical {
+  padding-top: 10px;
+}
+
 .room:hover {
   background-color: rgba(0, 0, 0, 0.1) !important;
   cursor: pointer;
@@ -38,18 +42,31 @@ body {
 
 .floor-inner {
   border-width: 2px solid rgba(0, 0, 0, 0.0);
+  font-size: 1.5rem;
 }
 
 .floor.current {
-  border-color: rgba(0, 0, 0, 0.5) !important;
+  border-color: rgb(0, 0, 0) !important;
+  font-weight: 700;
 }
 
 .floor-inner.current {
-  border-color: rgba(0, 0, 0, 0.5) !important;
+  border-color: rgba(64, 36, 36, 0.5) !important;
 }
 
 .floor:hover {
-  border-color: #9ca3af !important;
+  font-weight: 700;
+}
+
+.floor-btn {
+  font-weight: 500;
+  border-width: 3px;
+  margin: 0 2px;
+  border-color: black;
+}
+
+.floor-capacity {
+  font-size: 1rem;
 }
 
 @layer utilities {
