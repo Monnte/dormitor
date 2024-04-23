@@ -7,6 +7,8 @@ import { useContext } from "react";
 import { UIContext } from "./providers";
 import { Floor } from "./Floor";
 
+import styles from "@/css/Plan.module.css"
+
 export function Floors({plan}) {
     const { currentBlock } = useContext(UIContext);
     let floors = [];
@@ -32,7 +34,7 @@ export function Floors({plan}) {
     }
     return (
         <div 
-            className={`border-4 border-gray-700 m-8 `}
+            className={`border-4 border-gray-700 m-8 col-auto ${styles.plan}`}
             style={{ alignSelf: 'flex-start' }} 
         >
             {floors}

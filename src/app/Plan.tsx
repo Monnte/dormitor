@@ -11,6 +11,7 @@ import { UIContext } from "./providers";
 import { data } from "./data/data";
 import { Floors } from "./Floors";
 
+import styles from "@/css/Plan.module.css"
 
 export interface PlanSpecification {
     width: number,
@@ -26,8 +27,22 @@ export function Plan() {
     const [selected, setSelected] = useState(data[currentBlock].details[currentFloor][0]);
     let indexLast = 0;
 
+    const style = document.documentElement.style;    
+    
+    function updateSize() {
+        const heightOutput = (window.innerHeight - 180)/(895);
+        const widthOutput = (window.innerWidth - 580)/(812);
+
+        const scale = Math.min(heightOutput, widthOutput, 1)
+        console.log("scale", heightOutput, widthOutput, scale)
+        style?.setProperty('--scale', scale.toFixed(2));
+    }
+      
+    updateSize();
+    window.addEventListener("resize", updateSize, true);
+
     return (
-        <Card className="h-full flex justify-items-center items-center p-3">
+        <Card className="h-full p-3"> 
             <div className="flex flex-row w-full px-6">
                 <Button size="lg" color="default" variant="ghost" className="floor-btn"
                     onClick={() => setCurrentFloor(currentFloor - 1)}
@@ -38,13 +53,13 @@ export function Plan() {
                     isDisabled={currentFloor === data[currentBlock].plan.length - 1}
                 >Next Floor</Button>
             </div>
-            <div className="flex w-full items-center gap-4">
+            <div className={`flex h-full w-full items-center gap-4`}>
                 <Floors 
                     plan={{ width: 20, height: 10, count: data[currentBlock].plan.length, axis: "y" }}
                     currentFloor={currentFloor}
                     >
                 </Floors>
-                <div className="flex justify-center grow">
+                <div className={`flex justify-center grow ${styles.plan}`}>
                     <div>
                         {/* left corner div with floor and block informations */}
                         <div className="flex flex-col justify-center items-center">

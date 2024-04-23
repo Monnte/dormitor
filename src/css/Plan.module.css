@@ -1,0 +1,5 @@
+.plan {
+    transform: scale(var(--scale));
+    transform-origin: top left;
+    margin-bottom: calc((var(--scale) - 0.9) * 100%);
+}
